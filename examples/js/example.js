@@ -1,12 +1,25 @@
-const NFT = require("@aalu1418/sponsored-erc721")
+const NFT = require("./NFT")
+const {Message, format, sign, PersonalMessage} = require('js-conflux-sdk');
+const {encode, decode} = require('@conflux-dev/conflux-address-rust');
 
 const main = async () => {
-  const nft = new NFT("http://test.confluxrpc.org", "0x8aa092e0660c59eab456efdbd39ae8d158e9a95b");
+ 
+  const contract_address = format.hexAddress('cfxtest:acg28tvr2y6cfjs93yw5bsxxs9hv64h9gjvbfwjk71');
 
-  // const tx = await nft.mint("0x18e33e342b0f3fFE0b0193950FE9F2e0378a81Ee", 1);
+  const private_key = '0xf3002aadb5a9b231b26a2b7da83b94f2116f24600977ebf6c7c7db91fd4b6764';
+
+  const nft = new NFT(contract_address,private_key);
+
+
+  //cfxtest:aamdg3c03dtwx2nahsk621wme4x6fwpwfa14ya8hdy test
+  //cfxtest:aathtsjfep11dbe59csj34b985n1ag0hjep28d85rd 123
+  const address = 'cfxtest:aamdg3c03dtwx2nahsk621wme4x6fwpwfa14ya8hdy';
+
+
+  // const tx = await nft.mint(format.hexAddress(address), 100);
   // console.log("Mint TX hash:", tx.transactionHash);
 
-  const list = await nft.getAssets("0x18e33e342b0f3fFE0b0193950FE9F2e0378a81Ee")
+  const list = await nft.getAssets('cfxtest:aamdg3c03dtwx2nahsk621wme4x6fwpwfa14ya8hdy');
   console.log("Assets:", list);
 
 }

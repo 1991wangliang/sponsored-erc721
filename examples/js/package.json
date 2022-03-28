@@ -4,7 +4,8 @@
   "main": "example.js",
   "license": "MIT",
   "dependencies": {
-    "@aalu1418/sponsored-erc721": "^0.0.1"
+    "@aalu1418/sponsored-erc721": "^0.0.1",
+    "js-conflux-sdk": "^2.0.4"
   },
   "scripts": {
     "run-example": "node example.js"
